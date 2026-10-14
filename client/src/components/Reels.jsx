@@ -14,9 +14,21 @@ function Reel({ item }) {
   const code = shortcode(url);
   const box = useRef(null);
   const vid = useRef(null);
+  // the video file is only requested once the card is near the screen (or after a short delay as a fallback),
+  // so the 4 reels never compete with the hero and the first paint
+  const [armed, setArmed] = useState(false);
 
   useEffect(() => {
-    if (!video || !vid.current) return undefined;
+    if (!box.current || !('IntersectionObserver' in window)) { setArmed(true); return undefined; }
+    const near = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setArmed(true); near.disconnect(); } }, { rootMargin: '100px' });
+    near.observe(box.current);
+    const t = setTimeout(() => setArmed(true), 10000);
+    return () => { near.disconnect(); clearTimeout(t); };
+  }, []);
+
+  // play only while visible
+  useEffect(() => {
+    if (!video || !armed || !vid.current) return undefined;
     const v = vid.current;
     const io = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) v.play().catch(() => {});
@@ -24,13 +36,18 @@ function Reel({ item }) {
     }, { threshold: 0.4 });
     io.observe(v);
     return () => io.disconnect();
-  }, [video]);
+  }, [video, armed]);
 
   if (!code) return null;
   return (
     <div className={'reel' + (video ? ' has-video' : '')} ref={box}>
       {video ? (
-        <video ref={vid} src={asset(video)} poster={poster ? asset(poster) : undefined} autoPlay muted loop playsInline preload="auto" aria-hidden="true" />
+        <video
+          ref={vid}
+          src={armed ? asset(video) : undefined}
+          poster={poster ? asset(poster) : undefined}
+          autoPlay muted loop playsInline preload="metadata" aria-hidden="true"
+        />
       ) : (
         <iframe
           title={`Instagram reel ${code}`}

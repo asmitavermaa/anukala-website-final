@@ -4,7 +4,7 @@
   "private": true,
   "description": "Anukala: handcrafted nameplates, paintings and home decor. Static React site.",
   "scripts": {
-    "install:all": "npm --prefix client install",
+    "install:all": "cd client && npm install",
     "dev": "npm --prefix client run dev",
     "build": "npm --prefix client run build",
     "preview": "npm --prefix client run preview"

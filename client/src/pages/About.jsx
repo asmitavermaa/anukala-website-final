@@ -29,7 +29,7 @@ export default function About() {
       <section className="section about-story">
         <h2>Our story</h2>
         <p>
-          Anukala (also known as Art'n'Creations) began with a simple idea: the things around us should feel personal.
+          Anukala began with a simple idea: the things around us should feel personal.
           What started with hand-painted nameplates has grown into a collection that celebrates traditional and
           contemporary art, from floral and ethnic nameplates to palette-knife paintings, clocks, key holders, trays,
           coasters and gifts.
