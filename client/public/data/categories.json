@@ -1,0 +1,45 @@
+[
+  {
+    "slug": "nameplates",
+    "name": "Nameplates",
+    "blurb": "Handcrafted, customisable nameplates that make your entrance feel like home.",
+    "subcategories": [
+      "ethnic",
+      "floral",
+      "clay",
+      "acrylic",
+      "modern",
+      "resin",
+      "devotional",
+      "kids"
+    ]
+  },
+  {
+    "slug": "paintings",
+    "name": "Paintings",
+    "blurb": "Original hand-painted artworks, from palette-knife landscapes to devotional pieces.",
+    "subcategories": [
+      "palette",
+      "texture",
+      "abstract",
+      "traditional",
+      "devotionals"
+    ]
+  },
+  {
+    "slug": "home-decor",
+    "name": "Home Decor",
+    "blurb": "Coasters, trays, clocks, key holders, gifts and more, hand-finished for everyday living.",
+    "subcategories": [
+      "coaster",
+      "tray",
+      "clock",
+      "keyholder",
+      "personalized-gifts",
+      "tealight",
+      "magnets",
+      "lamps",
+      "jewellery"
+    ]
+  }
+]

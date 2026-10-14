@@ -1,0 +1,10 @@
+{
+  "profile": "https://www.instagram.com/anukala.home/",
+  "handle": "@anukala.home",
+  "reels": [
+    { "url": "https://www.instagram.com/reel/Db4n_3iBvVe/", "video": "/reels/Db4n_3iBvVe.mp4", "poster": "/reels/Db4n_3iBvVe.jpg" },
+    { "url": "https://www.instagram.com/reel/C1lhJBdov3m/", "video": "/reels/C1lhJBdov3m.mp4", "poster": "/reels/C1lhJBdov3m.jpg" },
+    { "url": "https://www.instagram.com/reel/DYxBco1BG3o/", "video": "/reels/DYxBco1BG3o.mp4", "poster": "/reels/DYxBco1BG3o.jpg" },
+    { "url": "https://www.instagram.com/reel/Dd3nLCshgi0/", "video": "/reels/Dd3nLCshgi0.mp4", "poster": "/reels/Dd3nLCshgi0.jpg" }
+  ]
+}

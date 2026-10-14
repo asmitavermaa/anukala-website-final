@@ -1,0 +1,12 @@
+{
+  "name": "anukala-site",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Anukala: handcrafted nameplates, paintings and home decor. Static React site.",
+  "scripts": {
+    "install:all": "npm --prefix client install",
+    "dev": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "preview": "npm --prefix client run preview"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "brand": "Anukala",
+  "tagline": "Handcrafted art for your home",
+  "location": "Wakad & Pimple Saudagar, Pune",
+  "announcements": [
+    "Handcrafted in Pune by in-house artists",
+    "Every piece can be customised to your name, size and colours",
+    "Message us on WhatsApp or Instagram to enquire about any piece"
+  ],
+  "contact": {
+    "phone": "+91 98332 39976",
+    "whatsapp": "919833239976",
+    "email": "anukala.anukala@gmail.com"
+  },
+  "socials": {
+    "instagram": "https://www.instagram.com/anukala.home/",
+    "facebook": "https://www.facebook.com/Anukala.home"
+  },
+  "founders": [
+    {
+      "name": "Swarnima Mathur",
+      "role": "Co-founder & Artist"
+    },
+    {
+      "name": "Amita Verma",
+      "role": "Co-founder & Artist"
+    }
+  ]
+}
