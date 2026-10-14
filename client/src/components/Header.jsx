@@ -23,21 +23,45 @@ export default function Header() {
     return () => clearInterval(t);
   }, [site]);
 
-  // publish the header height so the home hero can fill the rest of the screen
+  // The header is fixed, so shrinking it can never move the page. A same-height spacer holds its place in the
+  // layout, and its height is only ever measured while the header is full size (at the top of the page).
+  const [shellH, setShellH] = useState(null);
+  const scrolledRef = useRef(false);
+  const toggledAt = useRef(0);
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return undefined;
-    const set = () => {
-      if (window.scrollY < 10) document.documentElement.style.setProperty('--header-h', el.offsetHeight + 'px');
+    let timer;
+    const measure = () => {
+      if (scrolledRef.current) return; // never measure the shrunk header
+      // while the header is animating between sizes, wait until it has settled, then measure the final size
+      const since = Date.now() - toggledAt.current;
+      if (since < 700) {
+        clearTimeout(timer);
+        timer = setTimeout(measure, 720 - since);
+        return;
+      }
+      const h = el.offsetHeight;
+      setShellH(h);
+      document.documentElement.style.setProperty('--header-h', h + 'px'); // the home hero fills the rest of the screen
     };
-    set();
-    const ro = new ResizeObserver(set);
+    measure();
+    const ro = new ResizeObserver(measure);
     ro.observe(el);
-    return () => ro.disconnect();
+    return () => { ro.disconnect(); clearTimeout(timer); };
   }, []);
 
+  // two thresholds (shrink past 90px, grow back under 30px) so it can't flicker around a single line
   useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 40);
+    const on = () => {
+      const y = window.scrollY;
+      const next = scrolledRef.current ? y > 30 : y > 90;
+      if (next !== scrolledRef.current) {
+        scrolledRef.current = next;
+        toggledAt.current = Date.now();
+        setScrolled(next);
+      }
+    };
     on();
     window.addEventListener('scroll', on, { passive: true });
     return () => window.removeEventListener('scroll', on);
@@ -49,6 +73,7 @@ export default function Header() {
   const submit = (e) => { e.preventDefault(); go(); };
 
   return (
+    <div className="header-shell" style={shellH ? { height: shellH } : undefined}>
     <header className={'site-header' + (scrolled ? ' scrolled' : '')} ref={headerRef}>
       <div className="announce">{site?.announcements?.[msg] || 'Handcrafted in Pune'}</div>
 
@@ -121,5 +146,6 @@ export default function Header() {
         </div>
       )}
     </header>
+    </div>
   );
 }

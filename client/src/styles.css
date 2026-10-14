@@ -600,3 +600,7 @@ strong { font-weight: 500; }
 .make-card:hover .make-photo img { transform: scale(1.05); }
 .make-grid.with-photos .make-card h3, .make-grid.with-photos .make-card p { padding: 0 1.6rem; }
 @media (max-width: 900px) { .c-hero.split { grid-template-columns: 1fr; gap: 2rem; text-align: center; padding-top: 2.5rem; } }
+
+/* header: fixed (so shrinking never shifts the page); .header-shell reserves its full-size space */
+.header-shell { position: relative; z-index: 50; }
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; }
